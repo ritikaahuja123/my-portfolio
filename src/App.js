@@ -1,7 +1,6 @@
 import React from 'react';
-// import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import './index.css'; 
-// import ProjectDetail from './components/ProjectDetail';
 import Navbar from './components/Navbar';
 import Hero from './components/Hero';
 import About from './components/About';
@@ -10,14 +9,22 @@ import Contact from './components/Contact';
 import Footer from './components/Footer';
 
 function App() {
-    <div className="App">
-      <Navbar />
-      <Hero />
-      <About />
-      <Projects />
-      <Contact />
-      <Footer />
-    </div>
+  return (
+    <Router basename="/my-portfolio">
+      <div className="flex flex-col min-h-screen">
+        <Navbar />
+        <div className="flex-grow">
+          <Routes>
+            <Route path="/" element={<Hero />} />
+            <Route path="/about" element={<About />} />
+            <Route path="/projects" element={<Projects />} />
+            <Route path="/contact" element={<Contact />} />
+          </Routes>
+        </div>
+        <Footer />
+      </div>
+    </Router>
+  );
 }
 
 export default App;
